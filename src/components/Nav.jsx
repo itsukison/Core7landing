@@ -27,10 +27,10 @@ function useScramble() {
   }
 }
 
-function NavLink({ href, children }) {
+function NavLink({ href, children, className }) {
   const scramble = useScramble()
   return (
-    <a href={href} data-text={children} onMouseEnter={scramble}>
+    <a href={href} data-text={children} onMouseEnter={scramble} className={className}>
       {children}
     </a>
   )
@@ -42,15 +42,15 @@ export default function Nav({ copy, language, onLanguageChange }) {
       <a className="nav-logo" href="#top">
         CORE7
       </a>
-      <div className="nav-group">
+      <div className="nav-group nav-links">
         <NavLink href="#philosophy">{copy.philosophy}</NavLink>
         <NavLink href="#signal">{copy.signal}</NavLink>
       </div>
-      <div className="nav-group">
+      <div className="nav-group nav-links">
         <NavLink href="#product">{copy.product}</NavLink>
       </div>
       <div className="nav-group nav-right">
-        <NavLink href="#contact">{copy.contact}</NavLink>
+        <NavLink href="#contact" className="nav-link-desktop">{copy.contact}</NavLink>
         <div className="language-toggle" aria-label="Language">
           {Object.entries(LANGUAGES).map(([key, label]) => (
             <button

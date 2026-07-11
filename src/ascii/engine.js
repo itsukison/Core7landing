@@ -34,20 +34,15 @@ export const SCENES = {
     font: (h) => `700 ${Math.round(h)}px "Space Grotesk", "Helvetica Neue", sans-serif`,
   },
 
-  diamonds: {
+  orb: {
     type: 'band',
     ramp: 'NNNN0000AAAA88886666999944445555222IIII333???!!!',
     // Returns [xLeft, xRight] in px for a given y (px, origin at grid center), or null.
     interval(y, W, H) {
-      const shapes = [
-        { cy: -0.26 * H, ry: 0.24 * H, rx: Math.min(0.4 * W, 0.62 * H) },
-        { cy: 0.24 * H, ry: 0.3 * H, rx: Math.min(0.46 * W, 0.78 * H) },
-      ]
-      for (const s of shapes) {
-        const t = 1 - Math.abs(y - s.cy) / s.ry
-        if (t > 0) return [-s.rx * t, s.rx * t]
-      }
-      return null
+      const r = Math.min(0.36 * H, 0.34 * W)
+      if (Math.abs(y) >= r) return null
+      const half = Math.sqrt(r * r - y * y)
+      return [-half, half]
     },
   },
 
@@ -76,7 +71,7 @@ export const SCENES = {
   },
 }
 
-export const SCENE_ORDER = ['wordmark', 'diamonds', 'glass']
+export const SCENE_ORDER = ['wordmark', 'orb', 'glass']
 
 // ---------------------------------------------------------------------------
 // Engine
@@ -138,10 +133,15 @@ export class AsciiEngine {
     this._frame(performance.now())
   }
 
-  /** Re-rasterize after webfonts finish loading. */
+  /** Re-measure and re-rasterize after webfonts finish loading. */
   refresh() {
+    // The initial _measure() may have used a fallback font, producing a wrong
+    // cell width and an off-center grid — recompute both once fonts are in.
+    this._measure()
+    this.cols = 0
+    this.rows = 0
     this.fieldFor = ''
-    this._frame(performance.now())
+    this._resize()
   }
 
   setScene(name, { instant = false } = {}) {

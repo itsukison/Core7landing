@@ -21,8 +21,14 @@ export default function Hero({ copy }) {
     engineRef.current = main
     main.start()
 
-    // Rasterize the wordmark only after the display font is available
-    document.fonts?.load('700 100px "Space Grotesk"').then(() => main.refresh())
+    // Re-measure and rasterize once both the grid font (cell width) and the
+    // display font are available
+    if (document.fonts) {
+      Promise.all([
+        document.fonts.load('14px "IBM Plex Mono"'),
+        document.fonts.load('700 100px "Space Grotesk"'),
+      ]).then(() => main.refresh())
+    }
 
     // Pause when the hero is off-screen
     const io = new IntersectionObserver(([entry]) => {
