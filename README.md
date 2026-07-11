@@ -92,4 +92,4 @@ npm run build
 
 Deploy the contents of `dist/` to any static hosting provider.
 
-Because the footer subpages are handled by the React app, configure static hosting to fall back to `index.html` for clean paths such as `/company`, `/careers`, `/privacy`, `/terms`, and `/legal-notice`.
+Because the footer subpages are handled by the React app, static hosting must fall back to `index.html` for clean paths such as `/company`, `/careers`, `/privacy`, `/terms`, and `/legal-notice`. On Vercel this is configured by `vercel.json`, which rewrites all paths to `/index.html` (existing static files in `dist/` are still served directly).

@@ -10,6 +10,7 @@ export const content = {
     description:
       'Core7 builds AI that adapts to people - embedded into daily life, useful in real moments, designed around genuine human needs.',
     navLabel: 'Main',
+    backLabel: '<- BACK TO INDEX',
     nav: {
       philosophy: 'PHILOSOPHY',
       signal: 'SIGNAL',
@@ -169,6 +170,7 @@ export const content = {
     description:
       'Core7は、人が技術に合わせるのではなく、日々の生活と本当のニーズに寄り添って動くAIをつくります。',
     navLabel: 'メイン',
+    backLabel: '<- トップへ戻る',
     nav: {
       philosophy: '思想',
       signal: 'シグナル',

@@ -72,7 +72,7 @@ export default function App() {
         onLanguageChange={setLanguage}
       />
       {page ? (
-        <LegalPage page={page} />
+        <LegalPage page={page} backLabel={copy.backLabel} language={language} />
       ) : (
         <>
           <Hero copy={copy.hero} />
