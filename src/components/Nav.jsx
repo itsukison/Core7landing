@@ -1,38 +1,11 @@
-import { useRef } from 'react'
 import { LANGUAGES } from '../content.js'
-
-const SCRAMBLE = '<>!?;:*=#%'
-
-function useScramble() {
-  const timer = useRef(0)
-  return (e) => {
-    const el = e.currentTarget
-    const original = el.dataset.text
-    let frame = 0
-    clearInterval(timer.current)
-    timer.current = setInterval(() => {
-      frame++
-      const settled = Math.floor((frame / 12) * original.length)
-      el.textContent = original
-        .split('')
-        .map((ch, i) =>
-          ch === ' ' || i < settled ? ch : SCRAMBLE[(Math.random() * SCRAMBLE.length) | 0]
-        )
-        .join('')
-      if (settled >= original.length) {
-        clearInterval(timer.current)
-        el.textContent = original
-      }
-    }, 34)
-  }
-}
+import ScrambleText from './ScrambleText.jsx'
 
 function NavLink({ href, children, className }) {
-  const scramble = useScramble()
   return (
-    <a href={href} data-text={children} onMouseEnter={scramble} className={className}>
+    <ScrambleText as="a" href={href} className={className}>
       {children}
-    </a>
+    </ScrambleText>
   )
 }
 

@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import ScrambleText from './ScrambleText.jsx'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -34,27 +35,27 @@ export default function Sections({ copy }) {
   return (
     <main ref={rootRef}>
       <section id="philosophy" className="section">
-        <p className="section-label">{copy.philosophy.label}</p>
-        <p>{copy.philosophy.paragraphs[0]}</p>
-        <p className="statement">{copy.philosophy.paragraphs[1]}</p>
-        <p>{copy.philosophy.paragraphs[2]}</p>
+        <ScrambleText as="p" className="section-label">{copy.philosophy.label}</ScrambleText>
+        <ScrambleText as="p">{copy.philosophy.paragraphs[0]}</ScrambleText>
+        <ScrambleText as="p" className="statement">{copy.philosophy.paragraphs[1]}</ScrambleText>
+        <ScrambleText as="p">{copy.philosophy.paragraphs[2]}</ScrambleText>
       </section>
 
       <section id="signal" className="section">
-        <p className="section-label">{copy.signal.label}</p>
-        <p>{copy.signal.intro}</p>
+        <ScrambleText as="p" className="section-label">{copy.signal.label}</ScrambleText>
+        <ScrambleText as="p">{copy.signal.intro}</ScrambleText>
         <ul className="signal-list" aria-label={copy.signal.listLabel}>
           {copy.signal.qualities.map((quality) => (
-            <li key={quality}>{quality}</li>
+            <ScrambleText as="li" key={quality}>{quality}</ScrambleText>
           ))}
         </ul>
-        <p>{copy.signal.closing}</p>
+        <ScrambleText as="p">{copy.signal.closing}</ScrambleText>
       </section>
 
       <section id="product" className="section section-wide">
-        <p className="section-label">{copy.product.label}</p>
-        <p className="statement">{copy.product.statement}</p>
-        <p>{copy.product.body}</p>
+        <ScrambleText as="p" className="section-label">{copy.product.label}</ScrambleText>
+        <ScrambleText as="p" className="statement">{copy.product.statement}</ScrambleText>
+        <ScrambleText as="p">{copy.product.body}</ScrambleText>
         <a
           className="product-shot"
           href={APP_STORE_URL}
@@ -70,14 +71,14 @@ export default function Sections({ copy }) {
         <ul className="stats" aria-label={copy.product.statsLabel}>
           {copy.product.stats.map(([num, key]) => (
             <li key={key}>
-              <span className="stats-num">{num}</span>
-              <span className="stats-key">{key}</span>
+              <ScrambleText as="span" className="stats-num">{num}</ScrambleText>
+              <ScrambleText as="span" className="stats-key">{key}</ScrambleText>
             </li>
           ))}
         </ul>
-        <a className="store-link" href={APP_STORE_URL} target="_blank" rel="noreferrer">
+        <ScrambleText as="a" className="store-link" href={APP_STORE_URL} target="_blank" rel="noreferrer">
           {copy.product.storeLink}
-        </a>
+        </ScrambleText>
       </section>
     </main>
   )
