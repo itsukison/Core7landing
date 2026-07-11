@@ -1,0 +1,420 @@
+:root {
+  --bg: #0a0a0a;
+  --fg: #e8e8e6;
+  --dim: #7a7a76;
+  --mono: 'IBM Plex Mono', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo,
+    ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---- nav ---- */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 22px 28px;
+  letter-spacing: 0.06em;
+  font-size: 13px;
+  mix-blend-mode: difference;
+}
+
+.nav a:hover {
+  color: var(--fg);
+}
+
+.nav-logo {
+  font-weight: 500;
+}
+
+.nav-group {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  flex: 0 0 auto;
+}
+
+.language-toggle {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+  color: var(--dim);
+}
+
+.language-toggle::before {
+  content: '[';
+}
+
+.language-toggle::after {
+  content: ']';
+}
+
+.language-toggle button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--dim);
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  padding: 0 2px;
+}
+
+.language-toggle button + button::before {
+  content: '/';
+  color: var(--dim);
+  padding-right: 4px;
+}
+
+.language-toggle button.active {
+  color: var(--fg);
+}
+
+.language-toggle button:hover {
+  color: var(--fg);
+}
+
+/* ---- hero ---- */
+
+.hero {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.15;
+  white-space: pre;
+  overflow: hidden;
+  user-select: none;
+  color: var(--fg);
+}
+
+.hero-tagline {
+  position: absolute;
+  left: 28px;
+  bottom: 26px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+}
+
+.hero-tagline::after {
+  content: '█';
+  margin-left: 1px;
+  animation: cursor-blink 1.1s steps(1) infinite;
+}
+
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-tagline::after {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 16px;
+    font-size: 11px;
+    gap: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-group {
+    gap: 12px;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-tagline {
+    left: 16px;
+    bottom: 18px;
+  }
+
+  .detail-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* ---- sections ---- */
+
+.section {
+  max-width: 66ch;
+  margin: 0 auto;
+  padding: 22vh 24px 0;
+}
+
+.section p + p {
+  margin-top: 1.6em;
+}
+
+.section-label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  margin-bottom: 3.5em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.section-label::after {
+  content: ' ----------------------------------------';
+  color: var(--dim);
+  opacity: 0.4;
+}
+
+.statement {
+  font-size: 1.25em;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.signal-list {
+  list-style: none;
+  margin: 2.2em 0;
+  font-size: clamp(22px, 4.5vw, 44px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+.signal-list li::before {
+  content: '> ';
+  color: var(--dim);
+}
+
+.section-wide {
+  max-width: 900px;
+}
+
+.section-wide > p {
+  max-width: 66ch;
+}
+
+.product-shot {
+  display: block;
+  margin: 4em 0 3em;
+}
+
+.product-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.35s ease;
+}
+
+.product-shot:hover img {
+  filter: none;
+}
+
+.stats {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 56px;
+  margin: 0 0 1.5em;
+}
+
+.stats-num {
+  display: block;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.stats-key {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+}
+
+.store-link {
+  display: inline-block;
+  margin-top: 1.5em;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--dim);
+  padding-bottom: 2px;
+  white-space: pre;
+}
+
+.store-link:hover {
+  border-bottom-color: var(--fg);
+}
+
+.page-shell {
+  min-height: 100svh;
+}
+
+.legal-section {
+  padding-top: 12vh;
+}
+
+.page-title {
+  margin-bottom: 1.2em;
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.detail-list {
+  margin-top: 2.8em;
+  border-top: 1px solid rgba(232, 232, 230, 0.2);
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.38fr) 1fr;
+  gap: 24px;
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(232, 232, 230, 0.14);
+}
+
+.detail-row dt {
+  color: var(--dim);
+}
+
+.detail-row dd {
+  color: var(--fg);
+}
+
+.keigo-demo {
+  margin-top: 2.5em;
+  font-size: 15px;
+}
+
+.dim {
+  color: var(--dim);
+}
+
+.arrow {
+  white-space: pre;
+  color: var(--dim);
+}
+
+/* ---- footer ---- */
+
+.footer {
+  max-width: 66ch;
+  margin: 0 auto;
+  padding: 24vh 24px 8vh;
+}
+
+.footer-mail {
+  display: inline-block;
+  font-size: clamp(18px, 3.4vw, 32px);
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--dim);
+  margin-bottom: 6em;
+}
+
+.footer-mail:hover {
+  border-bottom-color: var(--fg);
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 72px;
+  margin-bottom: 7em;
+}
+
+.footer-col-title {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  margin-bottom: 1.4em;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li + li {
+  margin-top: 0.5em;
+}
+
+.footer-col a {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--fg);
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+.footer-wordmark {
+  font-family: var(--mono);
+  font-size: clamp(6px, 1.4vw, 12px);
+  line-height: 1.2;
+  color: var(--fg);
+  overflow-x: auto;
+}
+
+.footer-fine {
+  margin-top: 3em;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+}
