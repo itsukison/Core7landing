@@ -68,9 +68,22 @@ export default function Hero({ copy }) {
     { dependencies: [copy.tagline] }
   )
 
+  const cursorRef = useRef(null)
+
   const onPointerMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect()
-    engineRef.current?.spawnParticles(e.clientX - rect.left, e.clientY - rect.top)
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    engineRef.current?.spawnParticles(x, y)
+    const cursor = cursorRef.current
+    if (cursor) {
+      cursor.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`
+      cursor.style.opacity = '1'
+    }
+  }
+
+  const onPointerLeave = () => {
+    if (cursorRef.current) cursorRef.current.style.opacity = '0'
   }
 
   return (
@@ -78,9 +91,13 @@ export default function Hero({ copy }) {
       id="top"
       className="hero"
       onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
       onClick={() => setIdx((i) => (i + 1) % SCENE_ORDER.length)}
     >
       <pre ref={mainRef} className="hero-canvas" aria-hidden="true" />
+      <span ref={cursorRef} className="hero-cursor" aria-hidden="true">
+        CLICK
+      </span>
       <h1 className="visually-hidden">{copy.hiddenTitle}</h1>
       <p className="hero-tagline" ref={taglineRef}>
         {copy.tagline}

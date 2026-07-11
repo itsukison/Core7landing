@@ -23,6 +23,7 @@ body {
   font-size: 14px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  cursor: crosshair;
 }
 
 ::selection {
@@ -123,7 +124,32 @@ a {
   position: relative;
   height: 100svh;
   overflow: hidden;
-  cursor: pointer;
+  cursor: none;
+}
+
+/* The word CLICK is the cursor inside the hero */
+.hero-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--fg);
+  mix-blend-mode: difference;
+  will-change: transform;
+  transition: opacity 0.15s ease;
+}
+
+@media (hover: none) {
+  .hero {
+    cursor: auto;
+  }
+
+  .hero-cursor {
+    display: none;
+  }
 }
 
 .hero-canvas {
