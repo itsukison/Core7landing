@@ -36,21 +36,29 @@ function NavLink({ href, children, className }) {
   )
 }
 
+function withLanguage(href, language) {
+  if (language === 'en') return href
+
+  const [path, hash = ''] = href.split('#')
+  const separator = path.includes('?') ? '&' : '?'
+  return `${path}${separator}lang=${language}${hash ? `#${hash}` : ''}`
+}
+
 export default function Nav({ copy, language, onLanguageChange }) {
   return (
     <nav className="nav" aria-label={copy.navLabel}>
-      <a className="nav-logo" href="#top">
+      <a className="nav-logo" href={withLanguage('/#top', language)}>
         CORE7
       </a>
       <div className="nav-group nav-links">
-        <NavLink href="#philosophy">{copy.philosophy}</NavLink>
-        <NavLink href="#signal">{copy.signal}</NavLink>
+        <NavLink href={withLanguage('/#philosophy', language)}>{copy.philosophy}</NavLink>
+        <NavLink href={withLanguage('/#signal', language)}>{copy.signal}</NavLink>
       </div>
       <div className="nav-group nav-links">
-        <NavLink href="#product">{copy.product}</NavLink>
+        <NavLink href={withLanguage('/#product', language)}>{copy.product}</NavLink>
       </div>
       <div className="nav-group nav-right">
-        <NavLink href="#contact" className="nav-link-desktop">{copy.contact}</NavLink>
+        <NavLink href={withLanguage('/#contact', language)} className="nav-link-desktop">{copy.contact}</NavLink>
         <div className="language-toggle" aria-label="Language">
           {Object.entries(LANGUAGES).map(([key, label]) => (
             <button

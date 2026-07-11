@@ -67,7 +67,7 @@ Site copy lives in `src/content.js`. The app currently supports:
 - `en` - English
 - `ja` - Japanese
 
-`App.jsx` sets the active language, updates the document language, title, and meta description, then passes localized copy into the page components. Company profile, privacy policy, terms, and legal notice content are also maintained in `src/content.js` and are shown as separate hash pages from the footer, such as `#/company` and `#/privacy`.
+`App.jsx` sets the active language, updates the document language, title, and meta description, then passes localized copy into the page components. Company profile, careers, privacy policy, terms, and legal notice content are also maintained in `src/content.js` and are shown as clean-path footer pages, such as `/company` and `/privacy`.
 
 When editing copy, keep the existing tone:
 
@@ -91,4 +91,5 @@ npm run build
 ```
 
 Deploy the contents of `dist/` to any static hosting provider.
-# Core7landing
+
+Because the footer subpages are handled by the React app, configure static hosting to fall back to `index.html` for clean paths such as `/company`, `/careers`, `/privacy`, `/terms`, and `/legal-notice`.

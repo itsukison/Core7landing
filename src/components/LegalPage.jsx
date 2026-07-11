@@ -22,6 +22,12 @@ export default function LegalPage({ page }) {
           <p key={paragraph}>{paragraph}</p>
         ))}
         {page.items ? <DetailList items={page.items} /> : null}
+        {page.contact ? (
+          <div className="page-contact">
+            <p>{page.contact.label}</p>
+            <a href={page.contact.href}>{page.contact.text}</a>
+          </div>
+        ) : null}
       </section>
     </main>
   )

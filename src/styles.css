@@ -371,6 +371,28 @@ a {
   color: var(--fg);
 }
 
+.page-contact {
+  margin-top: 4em;
+}
+
+.page-contact p {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  margin-bottom: 1em;
+}
+
+.page-contact a {
+  display: inline-block;
+  font-size: clamp(18px, 3.4vw, 32px);
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--dim);
+}
+
+.page-contact a:hover {
+  border-bottom-color: var(--fg);
+}
+
 .keigo-demo {
   margin-top: 2.5em;
   font-size: 15px;

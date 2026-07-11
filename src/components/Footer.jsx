@@ -11,7 +11,19 @@ const WORDMARK = String.raw`
 const APP_STORE_URL =
   'https://apps.apple.com/jp/app/%E6%95%AC%E8%AA%9E%E3%83%9C%E3%82%BF%E3%83%B3-ai%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89/id6777901723'
 
-export default function Footer({ copy }) {
+function withLanguage(href, language) {
+  if (href === 'APP_STORE' || href.startsWith('mailto:') || href.startsWith('http')) {
+    return href
+  }
+
+  if (language === 'en') return href
+
+  const [path, hash = ''] = href.split('#')
+  const separator = path.includes('?') ? '&' : '?'
+  return `${path}${separator}lang=${language}${hash ? `#${hash}` : ''}`
+}
+
+export default function Footer({ copy, language }) {
   return (
     <footer id="contact" className="footer">
       <p className="section-label">{copy.label}</p>
@@ -27,7 +39,11 @@ export default function Footer({ copy }) {
               {col.links.map((link) => (
                 <li key={link.label}>
                   <a
-                    href={link.href === 'APP_STORE' ? APP_STORE_URL : link.href}
+                    href={
+                      link.href === 'APP_STORE'
+                        ? APP_STORE_URL
+                        : withLanguage(link.href, language)
+                    }
                     {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
                   >
                     {link.label}

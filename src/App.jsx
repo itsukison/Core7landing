@@ -6,16 +6,28 @@ import LegalPage from './components/LegalPage.jsx'
 import Footer from './components/Footer.jsx'
 import { content } from './content.js'
 
+const LANGUAGE_STORAGE_KEY = 'core7-language'
+
 function getRoute() {
-  const match = window.location.hash.match(/^#\/([^#?]+)/)
-  return match?.[1] ?? 'home'
+  return window.location.pathname
+}
+
+function getInitialLanguage() {
+  const params = new URLSearchParams(window.location.search)
+  const queryLanguage = params.get('lang')
+  const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
+
+  if (content[queryLanguage]) return queryLanguage
+  if (content[storedLanguage]) return storedLanguage
+  if (navigator.language.startsWith('ja')) return 'ja'
+  return 'en'
 }
 
 export default function App() {
-  const [language, setLanguage] = useState('en')
+  const [language, setLanguage] = useState(getInitialLanguage)
   const [route, setRoute] = useState(getRoute)
   const copy = content[language]
-  const page = copy.legalPages.find((item) => item.id === route)
+  const page = copy.footerPages.find((item) => item.path === route)
 
   useEffect(() => {
     document.documentElement.lang = copy.htmlLang
@@ -26,9 +38,13 @@ export default function App() {
   }, [copy, page])
 
   useEffect(() => {
-    const onHashChange = () => setRoute(getRoute())
-    window.addEventListener('hashchange', onHashChange)
-    return () => window.removeEventListener('hashchange', onHashChange)
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+  }, [language])
+
+  useEffect(() => {
+    const onLocationChange = () => setRoute(getRoute())
+    window.addEventListener('popstate', onLocationChange)
+    return () => window.removeEventListener('popstate', onLocationChange)
   }, [])
 
   useEffect(() => {
@@ -63,7 +79,7 @@ export default function App() {
           <Sections copy={copy.sections} />
         </>
       )}
-      <Footer copy={copy.footer} />
+      <Footer copy={copy.footer} language={language} />
     </>
   )
 }
