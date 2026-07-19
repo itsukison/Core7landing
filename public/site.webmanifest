@@ -1,7 +1,9 @@
 {
-  "name": "Core7",
+  "name": "株式会社Core7",
   "short_name": "Core7",
-  "description": "AI that adapts to people.",
+  "description": "人に合わせて動くAIプロダクトを開発する株式会社Core7の公式サイト",
+  "start_url": "/",
+  "lang": "ja",
   "icons": [
     {
       "src": "/icon-192.png",
