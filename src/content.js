@@ -8,7 +8,7 @@ export const content = {
     htmlLang: 'en',
     title: '株式会社Core7 | Core7, Inc. - AI THAT ADAPTS TO PEOPLE',
     description:
-      '株式会社Core7 (Core7, Inc.) builds AI that adapts to people and develops KeigoButton, an AI keyboard for rewriting Japanese into natural polite language.',
+      '株式会社Core7 (Core7, Inc.) builds AI that adapts to people and develops KeigoButton, an AI keyboard for natural polite Japanese.',
     navLabel: 'Main',
     backLabel: '<- BACK TO INDEX',
     nav: {
@@ -43,7 +43,7 @@ export const content = {
         label: '03 / PRODUCT - KEIGOBUTTON',
         statement: 'KeigoButton is our first product built around this belief.',
         body:
-          'KeigoButton is an iPhone AI keyboard that rewrites casual Japanese into natural polite language directly in LINE, email, Slack, and other text fields. It avoids the need to copy text into a separate AI chat and gives us a practical foundation for understanding how people choose tone, formality, and writing style.',
+          'Developed and operated by Core7, KeigoButton rewrites casual Japanese into natural polite language directly from the iPhone keyboard. It works without interrupting the flow of a conversation and gives us a practical foundation for understanding how people choose tone, formality, and writing style in real Japanese communication.',
         imageAlt:
           'KeigoButton App Store screenshots - rewrite casual Japanese into polite language with one tap, from any app, without leaving the keyboard',
         statsLabel: 'KeigoButton stats',
@@ -71,7 +71,6 @@ export const content = {
           title: 'PRODUCT',
           links: [
             { label: 'KEIGOBUTTON', href: '/#product' },
-            { label: 'PRODUCT WEBSITE', href: 'https://keigobutton.vercel.app/', external: true },
             { label: 'APP STORE', href: 'APP_STORE', external: true },
           ],
         },
@@ -97,8 +96,8 @@ export const content = {
           'We build software that reduces the distance between human intent and machine output. Our first product, KeigoButton, focuses on one everyday surface where that distance is easy to feel: Japanese communication.',
         ],
         items: [
-          ['Company name', 'Core7, inc.'],
-          ['Japanese legal name', '株式会社Core7 (コアセブン)'],
+          ['Company name', 'Core7, Inc. / 株式会社Core7'],
+          ['Japanese reading', 'コアセブン'],
           ['Representative', 'Itsuki Son'],
           ['Address', '3-9-24 Sakura, Setagaya-ku, Tokyo, Japan'],
           ['Corporate number', '3010901059255'],
@@ -172,7 +171,7 @@ export const content = {
     htmlLang: 'ja',
     title: '株式会社Core7｜人に合わせて動くAI',
     description:
-      '株式会社Core7（コアセブン）は、人に合わせて動くAIをつくる東京都世田谷区の会社です。AIキーボードアプリ「敬語ボタン」を開発・運営しています。',
+      '株式会社Core7（コアセブン）は、人に合わせて動くAIをつくる東京都世田谷区の会社です。AIキーボード「敬語ボタン」を開発・運営しています。',
     navLabel: 'メイン',
     backLabel: '<- トップへ戻る',
     nav: {
@@ -207,7 +206,7 @@ export const content = {
         label: '03 / プロダクト - 敬語ボタン',
         statement: '敬語ボタンは、この考え方から生まれた最初のプロダクトです。',
         body:
-          '敬語ボタンは、株式会社Core7が開発・運営するiPhone向けAIキーボードです。LINE、メール、Slack、DMなどの入力欄から離れず、くだけた日本語を自然な敬語、メール文、お詫び、依頼などへ書き直せます。',
+          '株式会社Core7が開発・運営する敬語ボタンは、キーボードから直接、くだけた日本語を自然な敬語に整えるAIキーボードです。アプリを移動せず、会話の流れを止めずに使える。同時に、実際の日本語コミュニケーションで人がどんな丁寧さ、距離感、文体を選ぶのかを理解するための土台にもなっています。',
         imageAlt:
           '敬語ボタンのApp Storeスクリーンショット。どのアプリからでも、キーボード上でくだけた日本語を自然な敬語に整えられる。',
         statsLabel: '敬語ボタンの実績',
@@ -235,7 +234,6 @@ export const content = {
           title: 'プロダクト',
           links: [
             { label: '敬語ボタン', href: '/#product' },
-            { label: '敬語ボタン公式サイト', href: 'https://keigobutton.vercel.app/', external: true },
             { label: 'App Store', href: 'APP_STORE', external: true },
           ],
         },

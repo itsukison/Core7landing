@@ -1,0 +1,15 @@
+# 株式会社Core7
+
+> 株式会社Core7（Core7, Inc.／コアセブン）は、人に合わせて動くAIプロダクトを開発・運営する日本の会社です。
+
+## Primary product
+
+- [敬語ボタン product facts](https://www.core7-jp.com/keigobutton.md): AIキーボード「敬語ボタン」の機能、用途、プライバシー、公式URL
+- [敬語ボタン structured data](https://www.core7-jp.com/keigobutton.json): 敬語ボタンのJSON-LDデータ
+- [敬語ボタン on the App Store](https://apps.apple.com/jp/app/id6777901723)
+
+## Company
+
+- [株式会社Core7 公式サイト](https://www.core7-jp.com/)
+- [会社概要](https://www.core7-jp.com/company)
+- Contact: keigobutton@gmail.com

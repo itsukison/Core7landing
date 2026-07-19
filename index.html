@@ -28,6 +28,8 @@
     <link rel="icon" href="/favicon.png" sizes="512x512" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="text/markdown" href="/keigobutton.md" title="敬語ボタン product facts" />
+    <link rel="alternate" type="application/ld+json" href="/keigobutton.json" title="敬語ボタン structured data" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -76,6 +78,38 @@
             "name": "株式会社Core7",
             "inLanguage": ["ja", "en"],
             "publisher": { "@id": "https://www.core7-jp.com/#organization" }
+          },
+          {
+            "@type": "MobileApplication",
+            "@id": "https://www.core7-jp.com/#keigobutton",
+            "name": "敬語ボタン",
+            "alternateName": ["KeigoButton", "敬語ボタン｜AIキーボード"],
+            "description": "LINE、メール、Slack、DMなどの文字入力欄で、くだけた日本語を自然な敬語、メール文、お詫び、依頼などへ書き直せるiPhone向けAIキーボードアプリ。",
+            "url": "https://www.core7-jp.com/#product",
+            "mainEntityOfPage": "https://www.core7-jp.com/",
+            "downloadUrl": "https://apps.apple.com/jp/app/id6777901723",
+            "sameAs": [
+              "https://keigobutton.vercel.app/",
+              "https://apps.apple.com/jp/app/id6777901723"
+            ],
+            "applicationCategory": "UtilitiesApplication",
+            "applicationSubCategory": "AIキーボード・文章作成支援",
+            "operatingSystem": "iOS 16.4以降",
+            "inLanguage": "ja",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "JPY"
+            },
+            "featureList": [
+              "キーボード上で日本語の文章を自然な敬語に書き直す",
+              "メール文・お詫び・依頼・要約・翻訳・言い換えに対応",
+              "入力中のアプリを離れずにAIによる文章支援を使える",
+              "通常の日本語入力は端末内で処理し、AI機能を明示的にタップした対象文章だけを送信する"
+            ],
+            "publisher": { "@id": "https://www.core7-jp.com/#organization" },
+            "provider": { "@id": "https://www.core7-jp.com/#organization" }
           }
         ]
       }
